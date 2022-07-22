@@ -18,7 +18,7 @@ final product = [
 ];
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(product[_currentProductIndex].name),
-            Padding(padding: EdgeInsets.only(top: 30)),
+            const Padding(padding: EdgeInsets.only(top: 30)),
             SizedBox(
               width: 200,
               child: TextField(
@@ -43,10 +43,12 @@ class _HomePageState extends State<HomePage> {
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 30)),
+            const Padding(padding: EdgeInsets.only(top: 30)),
             ElevatedButton(
               onPressed: () {
-                _currentProductIndex++;
+                setState(() {
+                  _currentProductIndex++;
+                });
               },
               child: const Text('check'),
             )

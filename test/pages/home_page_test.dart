@@ -8,15 +8,17 @@ void main() {
     testWidgets(
       'Show first product name',
       (WidgetTester tester) async {
-        await tester.pumpWidget(MaterialApp(
+        await tester.pumpWidget(const MaterialApp(
           home: HomePage(),
         ));
         expect(find.text(product[0].name), findsOneWidget);
 
         await tester.tap(find.text('check'));
+        await tester.pump();
         expect(find.text(product[1].name), findsOneWidget);
 
         await tester.tap(find.text('check'));
+        await tester.pump();
         expect(find.text(product[2].name), findsOneWidget);
       },
     );
